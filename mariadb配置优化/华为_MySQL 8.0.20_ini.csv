@@ -1,0 +1,117 @@
+参数名称,值,描述
+auto_increment_increment,1,auto_increment_increment和auto_increment_offset 用于master-to-master的复制，并可以用来控制AUTO_INCREMENT列的操作。
+auto_increment_offset,1,auto_increment_increment和auto_increment_offset用于master-to-master的复制，并可以用来控制AUTO_INCREMENT列的操作。
+back_log,1000,MySQL能拥有的有效连接请求数，MySQL主线程在很短时间内收到大量连接请求时发挥生效。然后主线程花很短的一些时间检查连接并且启动一个新线程。该back_log值表示在MySQL暂时停止回答新要求之前的很短时间内，有多少请求可以堆叠。默认值大小根据系统配置决定。
+binlog_cache_size,32768,在事务中，为二进制日志存储SQL语句的缓存容量。
+binlog_checksum,CRC32,启动变量时，引起主服务器在二进制日志中写入的每个事件的校验和。
+binlog_rows_query_log_events,ON,参数一旦启动，MySQL 5.6.2或以上版本服务器将信息写入日志事件，比如，将行日志查询写入其二进制日志。
+binlog_stmt_cache_size,32768,此变量决定在事务中，二进制日志存储下发的非事务语句的缓存空间。该参数必须设置为2的幂次方。
+block_encryption_mode,aes-128-cbc,控制基于块算法(如AES)的块加密模式。它影响AES_ENCRYPT() and AES_DECRYPT()的加密。
+bulk_insert_buffer_size,8388608,限制MyISAM缓存树每个线程的大小，单位为字节。
+character_set_server,utf8mb4,服务器字符集。
+collation_server,utf8mb4_0900_ai_ci,服务器默认排序。
+concurrent_insert,AUTO,该系统变量用于修改并发插入处理。如果设置为默认值AUTO，对于数据文件concurrent_insert中间没有空闲空间的MyISAM表，MySQL允许INSERT和SELECT语句并发运行。如果设置为NEVER，则禁用并发插入。如果设置为ALWAYS，即使对于已删除行的表，也允许在表末尾进行并发插入。
+connect_timeout,10,mysqld服务器在回Bad handshake响应之前等待连接数据包的时间（秒）。
+default_password_lifetime,0,定义了全局自动密码过期策略，单位为天。
+default_week_format,0,被week()函数使用的默认周格式。
+div_precision_increment,4,除法结果的精度位数。
+end_markers_in_json,OFF,指定优化程序JSON输出是否增加结束符。
+eq_range_index_dive_limit,200,条件个数超过该参数值时，优化程序从使用index dive改为使用index statistics。
+explicit_defaults_for_timestamp,OFF,处理TIMESTAMP字段的默认值、NULL值时是否开启非标准行为。默认该参数是关闭的，即开启非标准行为。
+ft_query_expansion_limit,20,用WITH QUERY EXPANSION进行全文搜索的最高匹配数。
+group_concat_max_len,1024,函数GROUP_CONCAT()结果的最大长度。
+idle_readonly_transaction_timeout,0,空闲的只读事务被kill前的等待时间，以秒为单位。(5.7.23版本之后支持)
+idle_transaction_timeout,0,空闲事务被kill前的等待时间，以秒为单位。默认值设为0，代表永不kill。(5.7.23版本之后支持)
+idle_write_transaction_timeout,0,空闲的读写事务被kill前的等待时间，以秒为单位。默认值设为0，代表永不kill。(5.7.23版本之后支持)
+innodb_autoextend_increment,64,当表空间已满时，自动扩展的表空间文件的递增空间容量（MB）。
+innodb_autoinc_lock_mode,2,产生自动递增值的锁定模式：0：旧的模式。1：新的模式。2：无锁定。
+innodb_buffer_pool_instances,1,InnoDB缓冲池划分的区域总数。如果设定值为default，表示该参数随内存规格变化。
+innodb_buffer_pool_size,1073741824,对于缓存数据及其表格索引，innodb使用的内存缓存字节大小。如果设定值为default，表示该参数随内存规格变化。
+innodb_concurrency_tickets,5000,决定能并发进入InnoDB的线程数。当一个线程尝试连接InnoDB，但是已经达到最大并发连接数时，该线程进入队列等待。如果请求被InnoDB接受，则会获得一个次数为innodb_concurrency_tickets的通行证，在次数用完之前，该线程重新请求时无须再进行innodb_thread_concurrency的检查。
+innodb_disable_sort_file_cache,OFF,对合并排序临时文件禁用操作系统文件系统缓存。
+innodb_flush_log_at_trx_commit,1,当重新安排并批量处理与提交相关的I/O操作时，可以控制提交操作在严格遵守ACID合规性和高性能之间的平衡。当值设为0时，每秒把事务日志缓存区的数据写入日志文件并刷新到磁盘；当设为默认值1时，是为了保证完整的ACID，每次提交事务时，把事务日志从缓存区写到日志文件中，并刷新日志文件的数据到磁盘上；如果设为2，每次提交事务都会把事务日志从缓存区写入日志文件，大约每隔一秒会刷新到磁盘。
+innodb_ft_cache_size,8000000,创建InnoDB FULLTEXT索引时内存存储解析文件的缓存容量。
+innodb_ft_enable_stopword,ON,关联InnoDB FULLTEXT索引和一组stopwords，同时创建该索引。
+innodb_ft_max_token_size,84,InnoDB FULLTEXT索引存储的单词的最大长度。
+innodb_ft_min_token_size,3,InnoDB FULLTEXT索引存储的单词的最小长度。
+innodb_ft_num_word_optimize,2000,在InnoDB FULLTEXT索引中，每一个OPTIMIZE TABLE操作进程需要处理的单词总数。
+innodb_ft_result_cache_limit,2000000000,每一个FTS查询或每个线程，InnoDBFULLTEXT搜索（FTS）的查询结果缓存限值（单位为字节）。
+innodb_ft_server_stopword_table,,创建InnoDB FULLTEXT索引进程中，包含可以忽略单词列表的表格名，格式为db_name/table_name。
+innodb_ft_sort_pll_degree,2,创建大表格搜索索引进程中，用于InnoDB FULLTEXT索引和tokenize文本的平行线程的总数。
+innodb_ft_user_stopword_table,,创建InnoDB FULLTEXT索引进程中，包含的一系列单词的表格名，格式为db_name/table_name。
+innodb_io_capacity,12000,每秒允许InnoDB进行I/O操作的最大数。如果设定值为default，表示该参数随磁盘IO类型变化。
+innodb_io_capacity_max,24000,为应对紧急情况，允许InnoDB扩展innodb_io_capacity设置的限值。如果设定值为default，表示该参数随磁盘IO类型变化。
+innodb_lock_wait_timeout,50,放弃事务前，InnoDB事务等待行锁的时间。
+innodb_log_compressed_pages,ON,是否重新压缩存储在InnoDB redo log页内的镜像 。
+innodb_max_dirty_pages_pct,75,InnoDB尝试从缓冲池刷新数据，以便脏页的百分比不超过该参数值。
+innodb_max_purge_lag,0,清除操作延迟时，控制如何延迟插入、更新和删除操作。
+innodb_max_purge_lag_delay,0,innodb_max_purge_lag配置选项造成的最大延时（毫秒）。
+innodb_old_blocks_pct,37,指定InnoDB缓冲池用于旧块子列表的近似百分比。
+innodb_old_blocks_time,1000,非零值表示在指定短暂时期内保护将被填满的引用数据。
+innodb_online_alter_log_max_size,134217728,InnoDB表格DDL在线操作进程中，临时日志文件空间的上限值。
+innodb_open_files,3000,InnoDB数据表驱动程序最多可以同时打开的文件数，默认值大小根据系统配置决定。
+innodb_optimize_fulltext_only,OFF,更改InnoDB表格内操作OPTIMIZE TABLE的语句方式。
+innodb_print_all_deadlocks,OFF,启用此选项时，有关InnoDB用户事务中所有死锁信息都记录在mysqld错误日志中。
+innodb_purge_batch_size,300,表示一次完成多少个undolog page，该参数和innodb_purge_threads=n组合调优，普通用户不需要修改它。
+innodb_purge_threads,4,InnoDB预留操作的后台线程的总数。
+innodb_read_io_threads,4,用于从磁盘读文件块的线程数。
+innodb_rollback_on_timeout,OFF,innodb_rollback_on_timeout确定后，事务超时后InnoDB回滚完整的事务。
+innodb_sort_buffer_size,1048576,创建InnoDB索引过程中，数据排序使用的缓冲空间。
+innodb_spin_wait_delay,6,自旋锁轮询间隔的最大延时。
+innodb_stats_method,nulls_equal,为InnoDB表收集关于索引值分布的统计时服务器如何处理NULL值：nulls_equal，nulls_unequal和nulls_ignored。对于nulls_equal，所有NULL索引值被认为是相等的，并形成一个单一的大小等于NULL值的数目的值组。对于nulls_unequal，NULL值被认为是不相等的，每个NULL形成一个大小为1的不同值组。对于nulls_ignored，NULL值被忽略。
+innodb_status_output,OFF,启用或禁用标准InnoDB监视器的周期性输出。
+innodb_status_output_locks,OFF,启用或禁用InnoDB锁定监视器。
+innodb_strict_mode,OFF,InnoDB严格检查模式，尤其采用了页数据压缩功能后，最好是开启该功能。开启此功能后，当创建表（CREATE TABLE）、更改表（ALTER TABLE）和创建索引（CREATE INDEX）语句时，如果写法有错误，不会有警告信息，而是直接抛出错误。
+innodb_sync_array_size,1,分解用于协同线程的内部数据结构，提高大规模等待线程工作量的同步率。
+innodb_sync_spin_loops,30,线程暂停前，等待即将释放的innoDB互斥（mutex）锁的线程总数。
+innodb_temp_data_file_path,ibtmp1:12M:autoextend,指定InnoDB临时表空间数据文件的路径，文件名和文件大小。
+innodb_thread_concurrency,0,InnoDB驱动程序能够同时使用的最大线程个数。
+innodb_thread_sleep_delay,10000,连接InnoDB队列之前InnoDB线程的睡眠时间（微秒）。
+innodb_write_io_threads,4,用于写脏页的线程数。
+interactive_timeout,28800,服务器在关闭交互式连接之前等待活动的秒数。
+join_buffer_size,262144,在无法增加索引的情况下，增加join_buffer_size值实现更快的完全联接。
+keep_files_on_create,OFF,禁止覆盖在DATA DIRECTORY或INDEX DIRECTORY中创建的MyISAM文件。
+key_buffer_size,16777216,增加缓冲池空间，便于处理用于索引块的索引(针对所有读和多写)。
+key_cache_age_threshold,300,该参数控制是否将缓存区从索引缓存的hot sublist中降级到warm list中。参数值越低，降级发生越快，最小可设为100。
+key_cache_block_size,1024,指定索引缓冲区的大小（字节）。
+key_cache_division_limit,100,索引缓冲区列表中hot sublist和warm sublist的分界点。该值用于warm sublist的缓冲区列表的百分比。
+lc_time_names,en_US,设定基于语言区域来显示日、月及其简写方式。
+local_infile,ON,控制LOCAL是否支持LOAD DATA INFILE。
+lock_wait_timeout,31536000,试图获得元数据锁的超时时间（秒）。
+log_queries_not_using_indexes,OFF,是否将不适用索引的查询记录到慢查询日志中。
+log_throttle_queries_not_using_indexes,0,限制每分钟写入慢查询日志中未使用索引的查询总数。
+long_query_time,1,当SQL语句执行时间超过此数值时，就会被记录到慢日志中，单位为秒。
+low_priority_updates,OFF,设为ON时，使INSERT/DELETE/UPDATE低于SELECT和LOCK TABLE READ的优先级。
+lower_case_table_names,1,如果设为0，表格名称被存储成固定并且表名称将是大小写敏感的。如果设为1，表格名称被存储成小写并且表名称将是大小写不敏感的。
+max_allowed_packet,1073741824,包或任何生成的中间字符串的最大值。包缓冲区初始化为net_buffer_length字节，但需要时可以增长到max_allowed_packet字节。该值默认很小，以捕获大的（可能是错误的）数据包。该值必须设置为1024的倍数
+max_connect_errors,100,如果一个主机的中断的连接数超出了这个值，这个主机再次连接时将被屏蔽。如需对该主机进行解锁，下发FLUSH HOST语句或执行mysqladmin flush-hosts命令。
+max_connections,1500,允许同时连接的客户端总数。如果设定值为default，表示该参数随内存规格变化。
+max_error_count,1024,显示存储的错误、警告、和说明消息的最大总数。
+max_sp_recursion_depth,0,限制存储过程被递归调用的最大次数，最小化对线程堆栈空间的需求。
+max_user_connections,0,特定MySQL帐户允许的最大同时连接数。
+max_write_lock_count,1.84467E+19,写锁超过该参数限定的次数后，处理部分等待中的读锁请求。
+net_buffer_length,16384,除非当前可用内存很小，否则不建议修改该变量。 修改时，将该变量设置为服务器预计发送的语句长度。
+net_read_timeout,30,中止读数据之前从一个连接等待更多数据的秒数。
+net_retry_count,10,如果从一个通信端口读数据时被中断，放弃之前重试的次数。
+net_write_timeout,60,中止写之前等待一个块被写入连接的秒数。
+performance_schema,OFF,启用或禁用性能模式。
+query_alloc_block_size,8192,为查询解析与执行分配的块尺寸，请输入1024倍数，否则重启失效。
+query_prealloc_size,8192,用于查询解析与执行的永久缓冲区。在查询之间该缓冲区不能释放，如果你执行复杂查询，分配更大的query_prealloc_size值可以帮助提高性能，因为它可以降低查询过程中服务器分配内存的需求。允许的值为1024的倍数。
+rds_sql_filter_enable,OFF,是否开启SQL限流能力，ON：开启，OFF：关闭（默认状态）。
+read_buffer_size,262144,对每个进行顺序扫描的线程将分配一个缓冲区。如果要进行大量顺序扫描，可增大参数值以提升性能。
+read_rnd_buffer_size,524288,在key-sort操作后按排序读取行时，避免读取磁盘。增大该参数值可提升ORDER BY操作的性能。
+skip_name_resolve,ON,不解析主机名。授权表中的主机列值必须为IP号或本地主机。
+sort_buffer_size,262144,增大该参数值可提升ORDER BY或GROUP BY操作的性能。
+sql_mode,,当前SQL服务器模式。
+sync_binlog,1,同步binlog（MySQL持久化到硬盘，或依赖于操作系统）。
+table_definition_cache,1400,可存入定义缓存中的表定义（来自.frm文件）。默认值大小根据系统配置决定。
+table_open_cache,4000,缓存的打开表的个数。
+table_open_cache_instances,16,打开的表缓存实例数。
+thread_cache_size,100,要缓存的线程数，修改该参数值不会优化线程实施性能。
+thread_stack,286720,如果线程堆栈大小过小，会限制服务器能处理的SQL语句的复杂程度、存储程序的递归深度，和其他耗费内存的操作。允许的值为1024的倍数。
+threadpool_enabled,ON,打开/关闭线程池插件。(5.7.23版本之后支持)
+time_zone,SYSTEM,"服务器时区。Africa/Cairo(UTC+02:00),Africa/Casablanca(UTC+01:00),Africa/Harare(UTC+02:00),Africa/Monrovia(UTC+00:00),Africa/Nairobi(UTC+03:00),Africa/Tripoli(UTC+02:00),Africa/Windhoek(UTC+01:00),America/Araguaina(UTC-03:00),America/Asuncion(UTC-04:00),America/Bogota(UTC-05:00),America/Caracas(UTC-04:00),America/Chihuahua(UTC-06:00),America/Cuiaba(UTC-04:00),America/Denver(UTC-06:00),America/Fortaleza(UTC-03:00),America/Guatemala(UTC-06:00),America/Halifax(UTC-03:00),America/Manaus(UTC-04:00),America/Matamoros(UTC-05:00),America/Monterrey(UTC-05:00),America/Montevideo(UTC-03:00),America/Phoenix(UTC-07:00),America/Santiago(UTC-04:00),America/Tijuana(UTC-07:00),Asia/Amman(UTC+03:00)+2,Asia/Ashgabat(UTC+05:00),Asia/Baghdad(UTC+03:00),Asia/Baku(UTC+04:00),Asia/Bangkok(UTC+07:00),Asia/Beirut(UTC+03:00),Asia/Calcutta(UTC+05:30),Asia/Damascus(UTC+03:00),Asia/Dhaka(UTC+06:00),Asia/Irkutsk(UTC+08:00),Asia/Jerusalem(UTC+03:00),Asia/Kabul(UTC+04:30),Asia/Karachi(UTC+05:00),Asia/Kathmandu(UTC+05:45),Asia/Krasnoyarsk(UTC+07:00),Asia/Magadan(UTC+11:00),Asia/Muscat(UTC+04:00),Asia/Novosibirsk(UTC+06:00),Asia/Riyadh(UTC+03:00),Asia/Seoul(UTC+09:00),Asia/Shanghai(UTC08:00),Asia/Singapore(UTC+08:00),Asia/Taipei(UTC+08:00),Asia/Tehran(UTC+04:30),Asia/Tokyo(UTC+09:00),Asia/Ulaanbaatar(UTC+09:00),Asia/Vladivostok(UTC+10:00),Asia/Yakutsk(UTC+09:00),Asia/Yerevan(UTC+04:00),Atlantic/Azores(UTC+00:00),Australia/Adelaide(UTC+09:30),Australia/Brisbane(UTC+10:00),Australia/Darwin(UTC+09:30),Australia/Hobart(UTC+10:00),Australia/Perth(UTC+08:00),Australia/Sydney(UTC+10:00),Canada/Newfoundland(UTC-02:30),Canada/Saskatchewan(UTC-06:00),Brazil/East(UTC-03:00),Europe/Amsterdam(UTC+02:00),Europe/Athens(UTC+03:00),Europe/Dublin(UTC+01:00),Europe/Helsinki(UTC+03:00),Europe/Istanbul(UTC+03:00),Europe/Kaliningrad(UTC+02:00),Europe/Moscow(UTC+03:00),Europe/Paris(UTC+02:00),Europe/Prague(UTC+02:00),Europe/Sarajevo(UTC+02:00),Pacific/Auckland(UTC+12:00),Pacific/Fiji(UTC+12:00),Pacific/Guam(UTC+10:00),Pacific/Honolulu(UTC-10:00),Pacific/Samoa(UTC-11:00),US/Alaska(UTC-08:00),US/Central(UTC-05:00),US/Eastern(UTC-04:00),US/East-Indiana(UTC-04:00),US/Pacific(UTC-07:00),UTC(UTC+00:00),SYSTEM(UTC+00:00)"
+tmp_table_size,16777216,内部（内存中）临时表的最大大小，如果一个内部的临时内存表超过这个尺寸，MySQL自动的把它转换成基于磁盘的MyISAM表。
+transaction_isolation,REPEATABLE-READ,指定默认的事务隔离等级。
+updatable_views_with_limit,YES,如果更新语句中包含LIMIT子句（通常使用GUI工具生成），当视图不包含底层表中定义的主键的所有列时，该变量控制视图是否能够更新。
+wait_timeout,28800,服务器关闭连接之前等待非交互式连接活动的秒数。
