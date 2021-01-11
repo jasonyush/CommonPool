@@ -1,0 +1,24 @@
+bind 127.0.0.1  192.168.150.50     #监听的主机地址
+port 6379                          #端口
+daemonize yes                      #启用守护进程
+pidfile /var/run/redis_6379.pid    #指定PID文件
+loglevel notice                    #日志级别   
+logfile "/var/log/redis_6379.log"  #指定日志文件
+
+dir  /etc/redis                    #指定本地数据库存放目录
+dbfilename dump.rdb                #指定本地数据库文件名吗，默认值为dump.rdb 
+activerehashing yes                #指定是否激活重置哈希，默认是开启
+include /path/to/local.conf        #指定包含其他的配置文件，可以在统一主机上实现说个redis实例之间使用同一份配置文件，儿童诗各个实力有拥有自己的特定的配置文件
+rdbcompression yes                 #指定储存至本地数据库时是否启用压缩，默认开启
+
+#RDB   持久化
+save 900 1                         #在900秒(15分钟)之后，如果至少有1个key发生变化，则dump内存快照。
+save 300 10                        #在300秒(5分钟)之后，如果至少有10个key发生变化，则dump内存快照。
+save 60 10000                      #在60秒(1分钟)之后，如果至少有10000个key发生变化，则dump内存快照。
+
+#AOF持久化配置
+appendonly yes                     #开启AOF持久化，默认为no
+appendfilename "appendonly.aof"    #指定更新日志文件名
+appendfsync always                 #每次有数据修改发生时都会写入AOF文件
+#appendfsync everysec              #每秒钟同步一次，该策略为AOF的缺省策略
+#appendfsync no                    #从不同步。高效但是数据不会被持久化。
